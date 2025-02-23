@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Press - Orlando Events">
+  <div class="min-h-screen bg-gray-50">
+    <Header />
+    
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-8">Press</h1>
+      
+      <div class="prose prose-lg">
+        <p class="text-gray-600">
+          For press inquiries, please contact our media relations team at press@orlandoevents.com
+        </p>
+        
+        <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Press Releases</h2>
+        <div class="space-y-6">
+          <div class="border-b border-gray-200 pb-6">
+            <h3 class="text-xl font-semibold text-gray-900">Orlando Events Launches New Platform</h3>
+            <p class="text-gray-500 text-sm">February 23, 2024</p>
+            <p class="mt-2 text-gray-600">
+              Orlando Events announces the launch of its new event discovery platform, making it easier than ever for residents and visitors to find and attend local events.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

@@ -1,0 +1,68 @@
+---
+const categories = [
+  {
+    name: "Concerts & Live Music",
+    icon: "🎵",
+    count: "156 events",
+  },
+  {
+    name: "Food & Drink",
+    icon: "🍽️",
+    count: "89 events",
+  },
+  {
+    name: "Family Activities",
+    icon: "👨‍👩‍👧‍👦",
+    count: "124 events",
+  },
+  {
+    name: "Arts & Culture",
+    icon: "🎨",
+    count: "67 events",
+  },
+  {
+    name: "Sports",
+    icon: "⚽",
+    count: "45 events",
+  },
+  {
+    name: "Nightlife",
+    icon: "🌙",
+    count: "93 events",
+  },
+];
+---
+
+<section class="py-12 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+        Popular Categories
+      </h2>
+      <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+        Browse events by category and find exactly what you're looking for
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        categories.map((category) => (
+          <a
+            href={`/categories/${category.name.toLowerCase().replace(/\s+/g, "-")}`}
+            class="relative group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+          >
+            <div class="flex items-center space-x-4">
+              <span class="text-4xl">{category.icon}</span>
+              <div>
+                <h3 class="text-lg font-medium text-gray-900 group-hover:text-primary-600">
+                  {category.name}
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">{category.count}</p>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

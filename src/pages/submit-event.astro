@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Submit Event">
+  <div class="min-h-screen bg-gray-50">
+    <Header />
+    
+    <div class="py-12">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white shadow sm:rounded-lg">
+          <div class="px-4 py-5 sm:p-6">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Submit Your Event</h1>
+            
+            <form id="submit-event-form" class="space-y-8">
+              <div class="space-y-6">
+                <div>
+                  <label for="title" class="block text-sm font-medium text-gray-700">
+                    Event Name *
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="text"
+                      name="title"
+                      id="title"
+                      required
+                      class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="organizer" class="block text-sm font-medium text-gray-700">
+                    Event Organizer *
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="text"
+                      name="organizer"
+                      id="organizer"
+                      required
+                      class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="date" class="block text-sm font-medium text-gray-700">
+                    Event Date *
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="date"
+                      name="date"
+                      id="date"
+                      required
+                      class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="time" class="block text-sm font-medium text-gray-700">
+                    Event Time
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="time"
+                      name="time"
+                      id="time"
+                      class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="location" class="block text-sm font-medium text-gray-700">
+                    Location *
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="text"
+                      name="location"
+                      id="location"
+                      required
+                      placeholder="Venue name and address"
+                      class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="price" class="block text-sm font-medium text-gray-700">
+                    Price *
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="text"
+                      name="price"
+                      id="price"
+                      required
+                      placeholder="e.g., Free, $10, $20-30"
+                      class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="description" class="block text-sm font-medium text-gray-700">
+                    Event Description *
+                  </label>
+                  <div class="mt-1">
+                    <textarea
+                      id="description"
+                      name="description"
+                      rows="5"
+                      required
+                      class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="website" class="block text-sm font-medium text-gray-700">
+                    Event Website
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="url"
+                      name="website"
+                      id="website"
+                      placeholder="https://"
+                      class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="image_url" class="block text-sm font-medium text-gray-700">
+                    Image URL
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="url"
+                      name="image_url"
+                      id="image_url"
+                      placeholder="https://"
+                      class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center">
+                <input
+                  id="terms"
+                  name="terms"
+                  type="checkbox"
+                  required
+                  class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                />
+                <label for="terms" class="ml-2 block text-sm text-gray-900">
+                  I agree to the
+                  <a href="/terms" class="text-primary-600 hover:text-primary-500">Terms of Service</a>
+                  and
+                  <a href="/privacy" class="text-primary-600 hover:text-primary-500">Privacy Policy</a>
+                </label>
+              </div>
+
+              <div class="pt-5">
+                <div class="flex justify-end">
+                  <button
+                    type="button"
+                    onclick="window.location.href='/'"
+                    class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                  >
+                    Submit Event
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <Footer />
+  </div>
+</Layout>
+
+<script>
+  import { supabase } from '../lib/supabase';
+
+  const form = document.getElementById('submit-event-form');
+  
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target as HTMLFormElement);
+    const eventData = {
+      title: formData.get('title'),
+      organizer: formData.get('organizer'),
+      date: formData.get('date'),
+      time: formData.get('time'),
+      location: formData.get('location'),
+      price: formData.get('price'),
+      description: formData.get('description'),
+      website: formData.get('website') || null,
+      image_url: formData.get('image_url') || null,
+      status: 'pending'
+    };
+
+    try {
+      const { error } = await supabase
+        .from('events')
+        .insert([eventData]);
+
+      if (error) throw error;
+
+      alert('Event submitted successfully! It will be reviewed by our team.');
+      window.location.href = '/events';
+    } catch (error) {
+      alert('Error submitting event: ' + (error as Error).message);
+    }
+  });
+</script>

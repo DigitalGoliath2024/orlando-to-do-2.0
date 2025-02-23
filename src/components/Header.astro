@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 justify-between items-center">
+      <div class="flex items-center">
+        <a href="/" class="flex items-center">
+          <span class="text-2xl font-bold text-primary-600">Things to Do Orlando</span>
+        </a>
+      </div>
+
+      <div class="hidden sm:flex sm:items-center sm:space-x-8">
+        <a href="/events" class="text-gray-700 hover:text-primary-600">Browse Events</a>
+        <a href="/categories" class="text-gray-700 hover:text-primary-600">Categories</a>
+        <a href="/submit-event" class="text-gray-700 hover:text-primary-600">Submit Event</a>
+      </div>
+    </div>
+  </nav>
+</header>

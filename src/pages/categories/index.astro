@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const categories = [
+  {
+    name: "Concerts & Live Music",
+    icon: "🎵",
+    description: "Live performances, concerts, and musical events",
+  },
+  {
+    name: "Food & Drink",
+    icon: "🍽️",
+    description: "Food festivals, wine tastings, and culinary events",
+  },
+  {
+    name: "Family Activities",
+    icon: "👨‍👩‍👧‍👦",
+    description: "Kid-friendly events and family entertainment",
+  },
+  {
+    name: "Arts & Culture",
+    icon: "🎨",
+    description: "Art exhibitions, theater performances, and cultural festivals",
+  },
+  {
+    name: "Sports",
+    icon: "⚽",
+    description: "Sporting events, tournaments, and recreational activities",
+  },
+  {
+    name: "Nightlife",
+    icon: "🌙",
+    description: "Parties, clubs, and evening entertainment",
+  },
+];
+---
+
+<Layout title="Event Categories - Orlando Events">
+  <div class="min-h-screen bg-gray-50">
+    <Header />
+    
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-8">
+        Event Categories
+      </h1>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {categories.map((category) => (
+          <a
+            href={`/categories/${category.name.toLowerCase().replace(/\s+/g, "-")}`}
+            class="relative group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+          >
+            <div class="flex items-center space-x-4">
+              <span class="text-4xl">{category.icon}</span>
+              <div>
+                <h3 class="text-lg font-medium text-gray-900 group-hover:text-primary-600">
+                  {category.name}
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">{category.description}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

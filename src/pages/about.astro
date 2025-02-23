@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About Us - Orlando Events">
+  <div class="min-h-screen bg-gray-50">
+    <Header />
+    
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-8">About Us</h1>
+      
+      <div class="prose prose-lg">
+        <p class="text-gray-600">
+          Welcome to Orlando Events, your premier destination for discovering and experiencing the best events in Orlando. 
+          Our mission is to connect the vibrant Orlando community with exceptional events and experiences.
+        </p>
+        
+        <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Our Story</h2>
+        <p class="text-gray-600">
+          Founded with a passion for bringing people together, Orlando Events has grown to become the go-to platform 
+          for event discovery in the greater Orlando area. We work closely with event organizers, venues, and local 
+          businesses to showcase the diverse range of activities our city has to offer.
+        </p>
+        
+        <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Our Mission</h2>
+        <p class="text-gray-600">
+          We strive to make event discovery simple and accessible for everyone. Whether you're looking for concerts, 
+          food festivals, family activities, or cultural experiences, we're here to help you find the perfect event.
+        </p>
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

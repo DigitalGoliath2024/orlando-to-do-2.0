@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { supabase } from '../../lib/supabase';
+import HomeButton from '../../components/HomeButton.astro';
+
+// Protect the route
+const { data: { session } } = await supabase.auth.getSession();
+
+if (!session) {
+  return Astro.redirect('/admin/login');
+}
+
+// Fetch pending events
+const { data: events } = await supabase
+  .from('events')
+  .select('*')
+  .order('created_at', { ascending: false });
+---
+
+<Layout title="Admin Dashboard">
+  <div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center mb-8">
+        <HomeButton />
+        <div class="flex items-center gap-4">
+          <span class="text-gray-600">{session.user.email}</span>
+          <button
+            id="logout-button"
+            class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+
+      <h1 class="text-2xl font-bold text-gray-900 mb-8">Event Submissions</h1>
+
+      <div class="bg-white shadow overflow-hidden sm:rounded-md">
+        <ul role="list" class="divide-y divide-gray-200">
+          {events?.map((event) => (
+            <li>
+              <div class="px-4 py-4 sm:px-6">
+                <div class="flex items-center justify-between">
+                  <div class="flex-1">
+                    <h3 class="text-lg font-medium text-gray-900">{event.title}</h3>
+                    <p class="mt-1 text-sm text-gray-500">{event.description}</p>
+                    <div class="mt-2 flex items-center text-sm text-gray-500">
+                      <span>{event.date}</span>
+                      <span class="mx-2">•</span>
+                      <span>{event.location}</span>
+                      <span class="mx-2">•</span>
+                      <span>{event.price}</span>
+                      <span class="mx-2">•</span>
+                      <span class="capitalize">{event.status}</span>
+                    </div>
+                  </div>
+                  <div class="flex space-x-2">
+                    {event.status === 'pending' && (
+                      <>
+                        <button
+                          data-event-id={event.id}
+                          class="approve-button bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                        >
+                          Approve
+                        </button>
+                        <button
+                          data-event-id={event.id}
+                          class="reject-button bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                        >
+                          Reject
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { supabase } from '../../lib/supabase';
+
+  // Logout handler
+  document.getElementById('logout-button')?.addEventListener('click', async () => {
+    await supabase.auth.signOut();
+    window.location.href = '/admin/login';
+  });
+
+  // Approve event handler
+  document.querySelectorAll('.approve-button').forEach(button => {
+    button.addEventListener('click', async () => {
+      const eventId = button.getAttribute('data-event-id');
+      const { error } = await supabase
+        .from('events')
+        .update({ status: 'approved' })
+        .eq('id', eventId);
+
+      if (error) {
+        alert('Error approving event: ' + error.message);
+      } else {
+        window.location.reload();
+      }
+    });
+  });
+
+  // Reject event handler
+  document.querySelectorAll('.reject-button').forEach(button => {
+    button.addEventListener('click', async () => {
+      const eventId = button.getAttribute('data-event-id');
+      const { error } = await supabase
+        .from('events')
+        .update({ status: 'rejected' })
+        .eq('id', eventId);
+
+      if (error) {
+        alert('Error rejecting event: ' + error.message);
+      } else {
+        window.location.reload();
+      }
+    });
+  });
+</script>
